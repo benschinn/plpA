@@ -1,4 +1,4 @@
-use "../0hausaufgaben/h0.sml";
+use "../0.sml";
 
 val test1 = double 17 = 34
 
