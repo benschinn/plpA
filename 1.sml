@@ -18,21 +18,16 @@ fun number_in_month (dates: t list, month: int) =
     then 1 + number_in_month(tl(dates), month)
     else number_in_month(tl(dates), month) 
 (* 3 *)
-
 fun number_in_months (dates: t list, months: int list) = 
   if null months then 0
-  else
+  else 
     let 
-      val d = hd(dates)
-      val m = hd(months)
-      val ds = tl(dates)
-      val ms = tl(months)
-    in 
-      if #2 d = m
-      then 1 + number_in_month(dates, m)
-      else number_in_months(ds, ms)
-    end
-
+      val m = number_in_month(dates, hd(months))
+       in
+         if m <> 0
+         then 1 + number_in_months(dates, tl(months))
+         else number_in_months(dates, tl(months))
+       end
 
 (* 4 *)
 fun dates_in_month (dates: t list, month: int) = 
