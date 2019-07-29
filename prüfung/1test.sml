@@ -1,22 +1,24 @@
 use "../1.sml";
 
-val test1 = is_older((1992, 10, 14), (1993, 3, 31)) = true
-val test2 = is_older((2016, 9, 16), (2016, 9, 31)) = true
-val test3 = is_older((1990, 5, 25), (1988, 3, 16)) = false
-val test4 = is_older((2016, 9, 16), (2016, 10, 14)) = true
+val test1 = is_older ((1,2,3),(2,3,4)) = true
 
-val test5 = number_in_month([(2006, 9, 16), (1993, 9, 09), (2012, 10, 12)], 9) = 2
-val test6 = number_in_month([(2006, 10, 16), (1993, 9, 09), (2012, 10, 12)], 9) = 1
-val test7 = number_in_month([(2006, 10, 16), (1993, 10, 09), (2012, 10, 12)], 10) = 3
+val test2 = number_in_month ([(2012,2,28),(2013,12,1)],2) = 1
+
+val test3 = number_in_months ([(2012,2,28),(2013,12,1),(2011,3,31),(2011,4,28)],[2,3,4]) = 3 
+
+val test4 = dates_in_month ([(2012,2,28),(2013,12,1)],2) = [(2012,2,28)]
+
+val test5 = dates_in_months ([(2012,2,28),(2013,12,1),(2011,3,31),(2011,4,28)],[2,3,4]) = [(2012,2,28),(2011,3,31),(2011,4,28)]
+
+val test6 = get_nth (["hi", "there", "how", "are", "you"], 2) = "there"
+
+val test7 = date_to_string (2013, 6, 1) = "June 1, 2013"
 (*
-val test8 = number_in_months([(2006, 9, 16), (1993, 10, 09), (2012, 10, 12)],
- [9, 10]) = 3
+val test8 = number_before_reaching_sum (10, [1,2,3,4,5]) = 3
+
+val test9 = what_month 70 = 3
+
+val test10 = month_range (31, 34) = [1,2,2,2]
+
+val test11 = oldest([(2012,2,28),(2011,3,31),(2011,4,28)]) = SOME (2011,3,31)
  *)
-
-val test9 = get_nth(["s", "m", "l"], 2) = "l"
-val test10 = get_nth(["s", "m", "l"], 0) = "s"
-
-val test11 = date_to_string((1993, 3, 31)) = "March 31, 1993"
-
-val test12 = dates_in_month([(2006, 12, 16), (1993, 10, 09), (2012, 12, 12)],
- 12) = [(2006, 12, 16), (2012, 12, 12)]

@@ -37,6 +37,18 @@ fun dates_in_month (dates: t list, month: int) =
     then hd(dates)::dates_in_month(tl(dates), month)
     else
       dates_in_month(tl(dates), month)
+(* 5 *) 
+fun dates_in_months(dates: t list, months: int list) = 
+  if null months then []
+  else
+    let
+      val month = hd(months)
+      val result = dates_in_month(dates, month)
+    in 
+      if null(result) = false
+      then month::dates_in_months(dates, tl(months))
+      else dates_in_months(dates, tl(months))
+    end
  
 (* 6*)
 fun get_nth (xs: string list, n: int) = 
