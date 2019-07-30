@@ -22,11 +22,12 @@ fun number_in_months (dates: t list, months: int list) =
   if null months then 0
   else 
     let 
-      val m = number_in_month(dates, hd(months))
+      val result = number_in_month(dates, hd(months))
+      val months' = tl months
        in
-         if m <> 0
-         then 1 + number_in_months(dates, tl(months))
-         else number_in_months(dates, tl(months))
+         if result <> 0
+         then 1 + number_in_months(dates, months')
+         else number_in_months(dates, months')
        end
 
 (* 4 *)
@@ -42,12 +43,12 @@ fun dates_in_months(dates: t list, months: int list) =
   if null months then []
   else
     let
-      val month = hd(months)
-      val result = dates_in_month(dates, month)
+      val result = dates_in_month(dates, hd months)
+      val months' = tl months
     in 
-      if null(result) = false
-      then month::dates_in_months(dates, tl(months))
-      else dates_in_months(dates, tl(months))
+      if null result = false
+      then result@dates_in_months(dates, months')
+      else dates_in_months(dates, months')
     end
  
 (* 6*)
