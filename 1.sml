@@ -71,4 +71,14 @@ fun date_to_string (date: t) =
 fun number_before_reaching_sum(sum: int, xs: int list) = 
   if sum <= 0
   then ~1
-  else 1 + number_before_reaching_sum((sum - hd(xs)), tl(xs));
+  else 1 + number_before_reaching_sum((sum - hd xs), tl xs)
+
+(* 9 *)
+fun what_month(days: int) = 
+  let
+    val months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+  in
+    1 + number_before_reaching_sum(days, months)
+  end
+
+
