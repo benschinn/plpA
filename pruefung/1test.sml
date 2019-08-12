@@ -1,4 +1,4 @@
-use "../1.sml";
+use "~/projects/mooc/plpA/1.sml";
 
 val test1 = is_older ((1,2,3),(2,3,4)) = true
 
