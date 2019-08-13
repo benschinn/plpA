@@ -82,16 +82,14 @@ fun what_month(days: int) =
   end
 
 (* 11 *)
-(*
- 1. oldest accepts list of dates
- 2. base case is if list is empty return NONE
- 3. use is_older function to evaluate oldest function in the list
- 4. need to iterate through the list and pass in two dates into the is_older fn
- 5. is_older evalutes to boolean
- *)
 fun oldest(dates: t list) = 
   if null dates
   then NONE
   else
+    let val nextVal = oldest(tl dates)
+    in if isSome nextVal andalso is_older(hd dates, valOf(nextVal))
+       then  nextVal
+       else SOME (hd dates)
+    end
 
 
