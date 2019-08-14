@@ -5,10 +5,10 @@ type t = int * int * int
 fun is_older (d1 : t, d2: t) =
   if d1 = d2 then false 
   else 
-    if #1 d1 <  #1 d2 then true 
-    else if #2 d1 <  #2 d2 then true 
-    else if #3 d1 <  #3 d2 then true 
-    else false
+    if #1 d1 >  #1 d2 then false 
+    else if #2 d1 >  #2 d2 then false 
+    else if #3 d1 >  #3 d2 then false 
+    else true 
 
 (* 2 *)
 fun number_in_month (dates: t list, month: int) =
@@ -82,14 +82,32 @@ fun what_month(days: int) =
   end
 
 (* 11 *)
+(*
 fun oldest(dates: t list) = 
   if null dates
   then NONE
   else
     let val nextVal = oldest(tl dates)
-    in if isSome nextVal andalso is_older(hd dates, valOf(nextVal))
-       then  nextVal
+    in if isSome nextVal andalso is_older(hd dates, valOf(nextVal)) <> true
+       then nextVal
        else SOME (hd dates)
     end
+ *)
 
+fun oldest(dates: t list) = 
+  if null dates
+  then NONE
+  else let
+    fun oldest_nonempty (dates: t list) = 
+      if null (tl dates)
+      then hd dates
+      else let val tl_ans = oldest_nonempty(tl dates)
+           in 
+             if is_older(hd dates, tl_ans)
+             then hd dates
+             else tl_ans
+           end
+       in
+         SOME (oldest_nonempty dates)
+       end
 
