@@ -1,6 +1,8 @@
 use "/Users/ben.schinn/projects/mooc/plpA/1.sml";
 
 val test1 = is_older ((1,2,3),(2,3,4)) = true
+val test1_ = is_older ((2,3,4), (1,2,3)) = false 
+val test1__ = is_older((1992, 10, 14), (1993, 03, 31)) = true 
 
 val test2 = number_in_month ([(2012,2,28),(2013,12,1)],2) = 1
 
