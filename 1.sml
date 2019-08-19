@@ -2,14 +2,20 @@
 type t = int * int * int
 
 (* 1 *)
-fun is_older (d1 : t, d2: t) =
-  if d1 = d2 then false 
-  else 
-    if #1 d1 >  #1 d2 then false 
-    else if #2 d1 >  #2 d2 then false 
-    else if #3 d1 >  #3 d2 then false 
-    else true 
-
+fun is_older (d1: t, d2: t) = 
+  let
+    val year1 = #1 d1
+    val year2 = #1 d2
+    val month1 = #2 d1
+    val month2 = #2 d2
+    val day1 = #3 d1
+    val day2 = #3 d2
+  in
+    if year1 < year2 then true
+    else if year1 = year2 andalso month1 < month2 then true
+    else if year1 = year2 andalso month1 = month2 andalso day1 < day2 then true
+    else false
+  end
 (* 2 *)
 fun number_in_month (dates: t list, month: int) =
   if null dates then 0
