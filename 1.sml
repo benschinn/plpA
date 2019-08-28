@@ -24,6 +24,28 @@ fun number_in_month (dates: t list, month: int) =
     then 1 + number_in_month(tl(dates), month)
     else number_in_month(tl(dates), month) 
 (* 3 *)
+(* failing specs
+ number_in_months: Tried to find the number of these dates:
+ [(1,2,25),(3,5,26),(1,12,29),(3,2,28),(1,2,27),(1,2,25),(6,7,8)] in these
+ months: [2]. There should have been 4, but your function said otherwise.
+ [incorrect answer]
+ number_in_months: Tried to find the number of these dates:
+ [(1,2,25),(3,2,28),(1,2,27),(1,2,25)] in these months: [2]. There should have
+ been 4, but your function said otherwise. [incorrect answer]
+ number_in_months: Tried to find the number of these dates:
+ [(1,2,25),(3,5,26),(1,12,29),(3,2,28),(1,2,27),(1,2,25),(6,7,8)] in these
+ months: [2,12]. There should have been 5, but your function said otherwise.
+ [incorrect answer]
+ number_in_months: Tried to find the number of these dates:
+ [(1,2,25),(3,5,26),(1,12,29),(3,2,28),(1,2,27),(1,2,25),(6,7,8)] in these
+ months: [2,7,5]. There should have been 6, but your function said otherwise.
+ [incorrect answer]
+ number_in_months: Tried to find the number of these dates:
+ [(1,2,25),(3,2,28),(1,2,27),(1,2,25)] in these months: [2,12]. There should
+ have been 4, but your function said otherwise. [incorrect answer]
+ *)
+
+
 fun number_in_months (dates: t list, months: int list) = 
   if null months then 0
   else 
