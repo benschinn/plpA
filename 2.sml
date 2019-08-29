@@ -8,8 +8,9 @@ fun same_string(s1 : string, s2 : string) =
 fun all_except_option(x : string, xs : string list) =
   case xs of
        [] => NONE
-     | same_string(x, x') => SOME(xs')
-     | x'::xs' => SOME(all_except_option xs')
+     | x'::xs' => (case same_string(x', x) of
+                        true => SOME xs'
+                      | false => NONE)
      
 
 (* you may assume that Num is always used with values 2, 3, ..., 10
